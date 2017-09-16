@@ -30,20 +30,33 @@
 
 # -*- coding: utf-8 -*-
 
-l = [1]
+
+def triangles():
+    l1 = [1]
+    l2 = [1]
+    k = 0
+    while True:
+        for i in range(k - 1):
+            l1.append(l2[i] + l2[i + 1])
+        if k != 0:
+            l1.append(1)
+        l2 = l1
+        l1 = [1]
+        k += 1
+        yield l2
+    # for k in range(10000):
+    #     for i in range(k - 1):
+    #         l1.append(l2[i] + l2[i + 1])
+    #     if k != 0:
+    #         l1.append(1)
+    #     l2 = l1
+    #     l1 = [1]
+    #     yield l2
 
 
-def triangles(n):
-    l = [1]
-    yield 1
-    yield 2
-    yield 3
-    yield 4
-
-
-a = triangles(3)
-print(next(a))
-print(next(a))
-print(next(a))
-print(next(a))
-print(next(a))
+n = 0
+for t in triangles():
+    print(t)
+    n = n + 1
+    if n == 10:
+        break
