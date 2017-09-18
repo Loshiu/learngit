@@ -44,14 +44,6 @@ def triangles():
         l1 = [1]
         k += 1
         yield l2
-    # for k in range(10000):
-    #     for i in range(k - 1):
-    #         l1.append(l2[i] + l2[i + 1])
-    #     if k != 0:
-    #         l1.append(1)
-    #     l2 = l1
-    #     l1 = [1]
-    #     yield l2
 
 
 n = 0
