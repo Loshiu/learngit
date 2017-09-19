@@ -1,5 +1,6 @@
 import math
 from functools import reduce
+import this
 print("给你一个列表 L, 对L进行升序排序并输出排序后的列表。")
 # 给你一个列表 L, 对L进行升序排序并输出排序后的列表。
 # 例如：L = [8,2,50,3]
@@ -54,6 +55,13 @@ print(' '.join(str(i) for i in priNum))
 #         if n % i == 0:
 #             return False
 #     return True
+# def is_prime(x, n):
+#     if n == x:
+#         return True
+#     if x % n == 0:
+#         return False
+#     n += 1
+#     return is_prime(x, n)
 
 print("已知矩形长a,宽b,输出其面积和周长，面积和周长以一个空格隔开。")
 # 已知矩形长a,宽b,输出其面积和周长，面积和周长以一个空格隔开。
@@ -134,30 +142,73 @@ print("给你一个正整数列表 L, 判断列表内所有数字乘积的最后
 # 例如：L=[2,8,3,50]
 # 则输出：0
 # 奇数×奇数=奇数，偶数×奇数=偶数，偶数×偶数=偶数
-L = [2, 5, 3]  # 2, 3, 5, 6, 7, 9, 10, 11, 13, 14
+L = [2, 5, 3, 6, ]  # 2, 3, 5, 6, 7, 9, 10, 11, 13, 14
 c = [0, 0]
 
 
-def is_prime(x, n):
-    if n == x:
-        return True
-    if x % n == 0:
-        return False
-    n += 1
-    return is_prime(x, n)
-
-
-def is_odd(x):
-    if x % 2 == 0:
-        return True
-    return False
-
-
-def has_odd(x):
-    while x != 1:
-        if not is_odd(x):
-            x /= 2
-
-
 for i in L:
-    if not is_odd(i):
+    if i % 2 == 0:
+        L[0] += 1
+    if i % 5 == 0:
+        L[1] += 1
+if L[0] > L[1]:
+    print(0)
+else:
+    print(1)
+
+print("给你一个整数a，数出a在二进制表示下1的个数，并输出。")
+# 光棍们对1总是那么敏感，因此每年的11.11被戏称为光棍节。小Py光棍几十载，光棍自有光棍的快乐。让我们勇敢地面对光棍的身份吧，现在就证明自己：
+# 给你一个整数a，数出a在二进制表示下1的个数，并输出。
+# 例如：a=7
+# 则输出：3
+a = 42
+count = 0
+while a * 2 // 2 != 0:
+    if a % 2 == 1:
+        count += 1
+    a //= 2
+print(count)
+# ============更好的解法============
+print(bin(7).count('1'))
+
+print("输出Python之禅")
+# 输出Python之禅。
+# 注意：输出python之禅的源码即可，不要转换为英文。（小小的提示：print this.s)
+# import this
+print(this.s)
+
+print("给定一个字符串a, 将a中的大写字母 转换成小写，其它字符不变，并输出。")
+# 给定一个字符串a, 将a中的大写字母 转换成小写，其它字符不变，并输出。
+# 例如：a="aaaaaabbbDDDDD"
+# 则输出：aaaaaabbbddddd
+a = "aaaaaabbbDDDDD"
+print(a.lower())
+
+print("人民币金额打印 ")
+# 银行在打印票据的时候，常常需要将阿拉伯数字表示的人民币金额转换为大写表示，现在请你来完成这样一个程序。
+# 在中文大写方式中，0到10以及100、1000、10000被依次表示为：    零 壹 贰 叁 肆 伍 陆 柒 捌 玖 拾 佰 仟 万
+# 以下的例子示范了阿拉伯数字到人民币大写的转换规则：
+# 1   壹圆
+# 11  壹拾壹圆
+# 111 壹佰壹拾壹圆
+# 101 壹佰零壹圆
+# -1000   负壹仟圆
+# 1234567 壹
+# 现在给你一个整数a(|a|<100000000), 请你打印出人民币大写表示.
+# 例如：a=1
+# 则输出：壹圆
+# 注意：请以Unicode的形式输出答案。提示：所有的中文字符，在代码中直接使用其Unicode的形式即可满足要求，中文的Unicode编码可以通过如下方式获得：u'壹'。
+# 注意：代码无需声明编码！！不要在代码头部声明文件编码，否则会导致语法错误！
+# Note：数据已于2013-11-19日加强，原来通过的代码可能不能再次通过。
+a = 63163000
+L = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+L1 = ['圆', '拾', '佰', '仟', '万', '拾', '佰', '仟']
+result = ''
+print(a)
+a = int(str(a)[::-1])
+for i in range(len(str(a)) - 1, -1, -1):
+    print(str(a)[i], L[int(str(a)[i])] + L1[i])
+    if str(a)[i] == '0':
+        break
+    result += L[int(str(a)[i])] + L1[i]
+print(result)
